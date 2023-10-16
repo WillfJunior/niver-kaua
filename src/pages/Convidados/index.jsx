@@ -1,6 +1,8 @@
 import { useState } from "react"
 import  "./style.css"
 import { TextField, Button, Stack,Alert } from "@mui/material"
+import  kaua1 from '../../kaua1.png'
+import  kauanovo from '../../kauanovo.png'
 export default function Convidados() {
     const [nome, setNome] = useState('');
     const [qtdAdultos, setQtdAdultos] = useState(0);
@@ -31,7 +33,7 @@ export default function Convidados() {
             
             <Stack  direction={{ xs: 'column', sm: 'row' }}
                     spacing={{ xs: 1, sm: 2, md: 4 }} justifyContent="center" >
-                <img src="/dist/kaua1.png" alt="Convidados" width="25%" height="40%" />
+                <img src={kaua1} alt="Convidados" width="25%" height="40%" />
                 { 
                     confirmado && 
                     <Stack spacing={2} direction="column" justifyContent="center" >
@@ -93,7 +95,7 @@ export default function Convidados() {
                      
                 </Stack>
 }
-                <img src="/dist/kauanovo.png" alt="Convidados" width="25%" height="100%"  />
+                <img src={kauanovo} alt="Convidados" width="25%" height="100%"  />
                 
             </Stack>
             
