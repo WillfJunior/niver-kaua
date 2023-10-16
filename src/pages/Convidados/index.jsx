@@ -6,6 +6,19 @@ export default function Convidados() {
     const [qtdAdultos, setQtdAdultos] = useState(0);
     const [qtdCriancas, setQtdCriancas] = useState(0);
     const [confirmacao, setConfirmacao] = useState(false);
+    const [confirmado, setconfirmado] = useState(false);
+    const [naoConfirmado, setNaoConfirmado] = useState(false);
+    const [exibeForm, setExibeForm] = useState(true);
+
+    function handleConfirm() {
+        setconfirmado(true);
+        setExibeForm(false);
+    }
+
+    function handleNoConfirm() {
+        setNaoConfirmado(true);
+        
+    }
 
     function handleConfirmation() {
         
@@ -18,12 +31,12 @@ export default function Convidados() {
             
             <Stack  direction={{ xs: 'column', sm: 'row' }}
                     spacing={{ xs: 1, sm: 2, md: 4 }} justifyContent="center" >
-                <img src="/dist/assets/kaua1.png" alt="Convidados" width="25%" height="40%" />
-                <Stack spacing={2} direction="column" justifyContent="center" >
+                <img src="/dist/kaua1.png" alt="Convidados" width="25%" height="40%" />
+                { 
+                    confirmado && 
+                    <Stack spacing={2} direction="column" justifyContent="center" >
                 
-                    {/* <img src="/src/assets/kaua1.png" alt="Convidados" width="20%" height="40%"  /> */}
-                    
-                                
+
                                     <TextField
                                             id="outlined-required"
                                             label="Insira seu Nome"
@@ -64,8 +77,24 @@ export default function Convidados() {
                     <Button variant="contained" onClick={handleConfirmation}>Confirmar</Button>
                     {confirmacao && <Alert severity="success">Obrigado pela confirmação! Esperamos por vocês!</Alert>}
                     
+                </Stack> }
+                { naoConfirmado && 
+                    <Stack spacing={2} justifyContent="center">
+                        <Alert severity="warning">Que pena! Sentiremos sua falta... Até a proxima!</Alert>
+                    </Stack> }
+                { exibeForm && !confirmado && !naoConfirmado &&
+                    <Stack spacing={2} direction="column" justifyContent="center" >
+                        <h6>Podemos contar com sua Presença?</h6>
+                        <Stack spacing={2} direction="row">
+                        <Button variant="contained" onClick={handleConfirm}>Sim</Button>
+                        <Button variant="contained" onClick={handleNoConfirm} color="error">Não</Button>
+                        
+                    </Stack>
+                     
                 </Stack>
-                <img src="/dist/assets/kauanovo.png" alt="Convidados" width="25%" height="100%"  />
+}
+                <img src="/dist/kauanovo.png" alt="Convidados" width="25%" height="100%"  />
+                
             </Stack>
             
             
