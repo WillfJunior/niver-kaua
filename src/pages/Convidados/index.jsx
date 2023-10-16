@@ -18,7 +18,7 @@ export default function Convidados() {
             
             <Stack  direction={{ xs: 'column', sm: 'row' }}
                     spacing={{ xs: 1, sm: 2, md: 4 }} justifyContent="center" >
-                <img src="/publicassets/kaua1.png" alt="Convidados" width="25%" height="40%" />
+                <img src="/dist/assets/kaua1.png" alt="Convidados" width="25%" height="40%" />
                 <Stack spacing={2} direction="column" justifyContent="center" >
                 
                     {/* <img src="/src/assets/kaua1.png" alt="Convidados" width="20%" height="40%"  /> */}
@@ -65,7 +65,7 @@ export default function Convidados() {
                     {confirmacao && <Alert severity="success">Obrigado pela confirmação! Esperamos por vocês!</Alert>}
                     
                 </Stack>
-                <img src="/public/kauanovo.png" alt="Convidados" width="25%" height="100%"  />
+                <img src="/dist/assets/kauanovo.png" alt="Convidados" width="25%" height="100%"  />
             </Stack>
             
             
