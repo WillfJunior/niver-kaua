@@ -55,7 +55,7 @@ export default function Convidados() {
             
             <Stack  direction={{ xs: 'column', sm: 'row' }}
                     spacing={{ xs: 1, sm: 2, md: 4 }} justifyContent="center" >
-                <img src={kaua1} alt="Convidados" width="25%" height="40%" />
+                <img src={kaua1} alt="Convidados" width="25%" height="40%" sizes="(min-width: 960px) 33vw, (min-width: 640px) 50vw, 100vw" />
                 { 
                     confirmado && 
                     <Stack spacing={2} direction="column" justifyContent="center" >
@@ -98,7 +98,9 @@ export default function Convidados() {
                                     />
                     </Stack>
                     
-                    <Button variant="contained" onClick={handleConfirmation}>Confirmar</Button>
+                    {nome.length > 0 && qtdAdultos > 0 ? 
+                        <Button variant="contained" onClick={handleConfirmation}>Confirmar</Button>
+                    :   <Button variant="contained" disabled>Confirmar</Button>}
                     {confirmacao && <Alert severity="success">Obrigado pela confirmação! Esperamos por vocês!</Alert>}
                     
                 </Stack> }
@@ -117,7 +119,7 @@ export default function Convidados() {
                      
                 </Stack>
 }
-                <img src={kauanovo} alt="Convidados" width="25%" height="100%"  />
+                <img src={kauanovo} alt="Convidados" width="25%" height="100%" sizes="(min-width: 960px) 33vw, (min-width: 640px) 50vw, 100vw"  />
                 
             </Stack>
             
