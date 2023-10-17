@@ -7,7 +7,7 @@ export default function Rotas() {
         <Router>
             <Routes>
                 <Route path="/" exact element={<Convidados />}/>
-                <Route path="/lista" element={<ListaConvidados />} />
+                <Route path="/lista" exact element={<ListaConvidados />} />
             </Routes>
         </Router>
     )
