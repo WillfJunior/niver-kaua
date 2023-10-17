@@ -23,9 +23,28 @@ export default function Convidados() {
     }
 
     function handleConfirmation() {
+        let body = JSON.stringify({
+            nome: nome,
+            qtdAdultos: parseInt(qtdAdultos),
+            qtdCriancas: parseInt(qtdCriancas)
+        });
+        console.log(body);
+        fetch('https://www.niverkaua.wfjuniorsistemas.com.br/convidados', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: body
+
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            setConfirmacao(true);
+            
+
+        })
         
-        console.log(nome, qtdAdultos, qtdCriancas);
-        setConfirmacao(true);
     }
     return (
         <>
