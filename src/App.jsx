@@ -1,14 +1,23 @@
 
 
 import './App.css'
-import Rotas from './routes'
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Convidados from "./pages/Convidados";
+import ListaConvidados from "./pages/ListaConvidados";
 
 function App() {
   
 
   return (
 
-      <Rotas />
+      <>
+      <Router>
+            <Routes>
+                <Route path="/" exact element={<Convidados />}/>
+                <Route path="/lista" exact element={<ListaConvidados />} />
+            </Routes>
+        </Router>
+      </>
   
   )
 }
