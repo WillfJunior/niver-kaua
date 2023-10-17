@@ -41,6 +41,9 @@ export default function Convidados() {
         .then(data => {
             console.log(data);
             setConfirmacao(true);
+            setQtdAdultos(0);
+            setQtdCriancas(0);
+            setNome('');
             
 
         })

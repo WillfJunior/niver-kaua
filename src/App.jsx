@@ -1,15 +1,15 @@
 
 
 import './App.css'
-import Convidados from './pages/Convidados'
+import Rotas from './routes'
 
 function App() {
   
 
   return (
-    <>
-      <Convidados />
-    </>
+
+      <Rotas />
+  
   )
 }
 
