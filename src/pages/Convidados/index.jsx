@@ -54,7 +54,7 @@ export default function Convidados() {
             <h2>Por favor confirme a sua presença e quantidade de pessoas da sua familia que estarão presentes.!!!</h2>
             
             <Stack  direction={{ xs: 'column', sm: 'row' }}
-                    spacing={{ xs: 1, sm: 2, md: 4 }} justifyContent="center" >
+                    spacing={{ xs: 1, sm: 2, md: 4 }} justifyContent="center" alignItems="center">
                 <img src={kaua1} alt="Convidados" width="25%" height="40%" sizes="(min-width: 960px) 33vw, (min-width: 640px) 50vw, 100vw" />
                 { 
                     confirmado && 
@@ -99,8 +99,10 @@ export default function Convidados() {
                     </Stack>
                     
                     {nome.length > 0 && qtdAdultos > 0 ? 
+                    
                         <Button variant="contained" onClick={handleConfirmation}>Confirmar</Button>
-                    :   <Button variant="contained" disabled>Confirmar</Button>}
+                    :   <Button variant="contained" disabled>Confirmar</Button>
+                    }
                     {confirmacao && <Alert severity="success">Obrigado pela confirmação! Esperamos por vocês!</Alert>}
                     
                 </Stack> }
@@ -111,7 +113,7 @@ export default function Convidados() {
                 { exibeForm && !confirmado && !naoConfirmado &&
                     <Stack spacing={2} direction="column" justifyContent="center" >
                         <h6>Podemos contar com sua Presença?</h6>
-                        <Stack spacing={2} direction="row">
+                        <Stack spacing={2} direction="row" justifyContent="center" alignItems="center">
                         <Button variant="contained" onClick={handleConfirm}>Sim</Button>
                         <Button variant="contained" onClick={handleNoConfirm} color="error">Não</Button>
                         
