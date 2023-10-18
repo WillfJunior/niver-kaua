@@ -1,6 +1,6 @@
 import { useState } from "react"
 import  "./style.css"
-import { TextField, Button, Stack,Alert } from "@mui/material"
+import { TextField, Button, Stack,Alert, CircularProgress } from "@mui/material"
 import  kaua1 from '../../kaua1.png'
 import  kauanovo from '../../kauanovo.png'
 export default function Convidados() {
@@ -11,6 +11,7 @@ export default function Convidados() {
     const [confirmado, setconfirmado] = useState(false);
     const [naoConfirmado, setNaoConfirmado] = useState(false);
     const [exibeForm, setExibeForm] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);  
 
     function handleConfirm() {
         setconfirmado(true);
@@ -23,6 +24,7 @@ export default function Convidados() {
     }
 
     function handleConfirmation() {
+        setIsLoading(true);
         let body = JSON.stringify({
             nome: nome,
             qtdAdultos: parseInt(qtdAdultos),
@@ -44,6 +46,7 @@ export default function Convidados() {
             setQtdAdultos(0);
             setQtdCriancas(0);
             setNome('');
+            setIsLoading(false);
             
 
         })
@@ -100,7 +103,9 @@ export default function Convidados() {
                     
                     {nome.length > 0 && qtdAdultos > 0 ? 
                     
-                        <Button variant="contained" onClick={handleConfirmation}>Confirmar</Button>
+                        <Button variant="contained" onClick={handleConfirmation}>
+                            {isLoading ? <CircularProgress color="inherit" size={24}  /> : 'Confirmar' }
+                        </Button>
                     :   <Button variant="contained" disabled>Confirmar</Button>
                     }
                     {confirmacao && <Alert severity="success">Obrigado pela confirmação! Esperamos por vocês!</Alert>}
