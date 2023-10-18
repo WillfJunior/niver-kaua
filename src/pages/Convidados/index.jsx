@@ -20,6 +20,32 @@ export default function Convidados() {
 
     function handleNoConfirm() {
         setNaoConfirmado(true);
+        setIsLoading(true);
+        let body = JSON.stringify({
+            nome: nome + ' - Não Confirmado',
+            qtdAdultos: 0,
+            qtdCriancas: 0
+        });
+        console.log(body);
+        fetch('https://www.niverkaua.wfjuniorsistemas.com.br/convidados', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: body
+
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            setConfirmacao(true);
+            setQtdAdultos(0);
+            setQtdCriancas(0);
+            setNome('');
+            setIsLoading(false);
+            
+
+        })
         
     }
 
@@ -59,12 +85,12 @@ export default function Convidados() {
             <Stack  direction={{ xs: 'column', sm: 'row' }}
                     spacing={{ xs: 1, sm: 2, md: 4 }} justifyContent="center" alignItems="center">
                 <img src={kaua1} alt="Convidados" width="25%" height="40%" sizes="(min-width: 960px) 33vw, (min-width: 640px) 50vw, 100vw" />
+                
                 { 
                     confirmado && 
                     <Stack spacing={2} direction="column" justifyContent="center" >
                 
-
-                                    <TextField
+                <TextField
                                             id="outlined-required"
                                             label="Insira seu Nome"
                                             InputLabelProps={{
@@ -74,6 +100,7 @@ export default function Convidados() {
                                             onChange={(e) => setNome(e.target.value)}
                                             
                                     />
+                                    
                                 
                                 
                     <Stack spacing={2} direction="row">
@@ -118,9 +145,21 @@ export default function Convidados() {
                 { exibeForm && !confirmado && !naoConfirmado &&
                     <Stack spacing={2} direction="column" justifyContent="center" >
                         <h6>Podemos contar com sua Presença?</h6>
+                        <TextField
+                                            id="outlined-required"
+                                            label="Insira seu Nome"
+                                            InputLabelProps={{
+                                                shrink: true,
+                                            }}
+                                            value={nome}
+                                            onChange={(e) => setNome(e.target.value)}
+                                            
+                                    />
                         <Stack spacing={2} direction="row" justifyContent="center" alignItems="center">
                         <Button variant="contained" onClick={handleConfirm}>Sim</Button>
-                        <Button variant="contained" onClick={handleNoConfirm} color="error">Não</Button>
+                        <Button variant="contained" onClick={handleNoConfirm} color="error">
+                        {isLoading ? <CircularProgress color="inherit" size={10}  /> : 'Não' }
+                        </Button>
                         
                     </Stack>
                      
