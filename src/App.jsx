@@ -14,7 +14,7 @@ function App() {
       <Router>
             <Routes>
                 <Route path="/" exact element={<Convidados />}/>
-                <Route path="/lista" exact element={<ListaConvidados />} />
+                <Route path="/lista" element={<ListaConvidados />} />
             </Routes>
         </Router>
       </>
