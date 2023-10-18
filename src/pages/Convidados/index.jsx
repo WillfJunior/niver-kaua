@@ -155,13 +155,18 @@ export default function Convidados() {
                                             onChange={(e) => setNome(e.target.value)}
                                             
                                     />
-                        <Stack spacing={2} direction="row" justifyContent="center" alignItems="center">
-                        <Button variant="contained" onClick={handleConfirm}>Sim</Button>
-                        <Button variant="contained" onClick={handleNoConfirm} color="error">
-                        {isLoading ? <CircularProgress color="inherit" size={10}  /> : 'Não' }
-                        </Button>
                         
-                    </Stack>
+                            { nome.length > 0 ?
+                            <Stack spacing={2} direction="row" justifyContent="center" alignItems="center">
+                                <Button variant="contained" onClick={handleConfirm}>Sim</Button>
+                                <Button variant="contained" onClick={handleNoConfirm} color="error">Não</Button>
+                            </Stack> : 
+                            <Stack spacing={2} direction="row" justifyContent="center" alignItems="center">
+                                <Button variant="contained" disabled>Sim</Button>
+                                <Button variant="contained" disabled>Não</Button>
+                            </Stack>
+                            }
+                                
                      
                 </Stack>
 }
