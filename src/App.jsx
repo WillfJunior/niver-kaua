@@ -13,8 +13,8 @@ function App() {
       <>
       <Router>
             <Routes>
-                <Route path="/" exact element={<Convidados />}/>
-                <Route path="/lista" element={<ListaConvidados />} />
+                <Route path="/" exact element={<ListaConvidados />}/>
+                <Route path="/lista" element={<Convidados />} />
             </Routes>
         </Router>
       </>
